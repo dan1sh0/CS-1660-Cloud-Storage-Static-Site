@@ -25,5 +25,5 @@ jobs:
       - name: Upload Assets to Google Cloud Storage
         uses: google-github-actions/upload-cloud-storage@v1
         with:
-          path: 'public'  # Directory to upload, e.g., 'build/', 'public/'
-          destination: 'text-changer'  # Bucket name and path
+          path: 'public' 
+          destination: 'gs://text-changer/home/danishg522/'  # Bucket name and path
