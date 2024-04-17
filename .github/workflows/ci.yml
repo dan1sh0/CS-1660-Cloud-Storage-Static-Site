@@ -1,0 +1,25 @@
+name: Deploy to Google Cloud Storage
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          workload_identity_provider: 'projects/static-website-storage/locations/global/workloadIdentityPools/github/providers/my-repo'
+          service_account: 'githubservice@static-website-storage.iam.gserviceaccount.com'
+      
+      - name: Upload Assets to Google Cloud Storage
+        uses: google-github-actions/upload-cloud-storage@v1
+        with:
+          path: 'public'  # Directory to upload, e.g., 'build/', 'public/'
+          destination: 'gs://text-changer/'  # Bucket name and path
