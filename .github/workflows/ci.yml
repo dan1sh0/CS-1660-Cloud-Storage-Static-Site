@@ -26,4 +26,4 @@ jobs:
         uses: google-github-actions/upload-cloud-storage@v1
         with:
           path: '.' 
-          destination: 'gs://text-changer/'  # Bucket name and path
+          destination: 'text-changer'  # Bucket name and path
